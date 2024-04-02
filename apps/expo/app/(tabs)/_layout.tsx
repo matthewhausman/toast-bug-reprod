@@ -1,4 +1,4 @@
-import { Avatar, Circle, ColorTokens, Theme, YStack, validToken } from '@my/ui'
+import { Avatar, Circle, ColorTokens, Theme, YStack, useToastController, validToken } from '@my/ui'
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Home, Plus } from '@tamagui/lucide-icons'
@@ -7,6 +7,7 @@ import { SolitoImage } from 'solito/image'
 import { useRouter } from 'solito/router'
 
 export default function Layout() {
+  const toastController = useToastController()
   return (
     <>
       <Stack.Screen
@@ -27,7 +28,8 @@ export default function Layout() {
           listeners={({ navigation }: any) => ({
             tabPress: (event: any) => {
               event.preventDefault()
-              navigation.navigate('create')
+              // navigation.navigate('create')
+              toastController.show('Testing', { message: 'testing' })
             },
           })}
           options={{

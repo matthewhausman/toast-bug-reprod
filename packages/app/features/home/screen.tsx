@@ -16,12 +16,15 @@ import {
   YStack,
   isWeb,
   useMedia,
+  useToastController,
   validToken,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
+import { Provider } from 'app/provider'
 import React from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
+import { useRouter } from 'solito/router'
 
 const defaultAuthors = [
   {
@@ -37,10 +40,18 @@ const defaultAuthors = [
 ]
 
 export function HomeScreen() {
+  const router = useRouter()
   return (
     <XStack maw={1480} als="center" f={1}>
       <ScrollView f={3} fb={0}>
         <YStack gap="$3" pt="$5" pb="$8">
+          <Button
+            onPress={() => {
+              router.push('/about')
+            }}
+          >
+            Go To About
+          </Button>
           <YStack gap="$6">
             <AchievementsSection />
             <OverviewSection />

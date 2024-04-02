@@ -41,7 +41,10 @@ export default function HomeLayout() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <Provider initialSession={initialSession}>
-        <Stack />
+        <Stack>
+          <Stack.Screen name="about" options={{ presentation: 'modal' }}></Stack.Screen>
+          <Stack.Screen name="(tabs)"></Stack.Screen>
+        </Stack>
       </Provider>
     </View>
   )
