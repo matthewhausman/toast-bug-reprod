@@ -1,4 +1,4 @@
-import { Avatar, FullscreenSpinner, SubmitButton, Theme, YStack, useToastController } from '@my/ui'
+import { Avatar, Theme, YStack, useToastController } from '@my/ui'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { SchemaForm, formFields } from 'app/utils/SchemaForm'
 import { createParam } from 'solito'
@@ -45,11 +45,7 @@ const EditProfileForm = ({
         about: initial.about ?? '',
       }}
       onSubmit={(values) => undefined}
-      renderAfter={({ submit }) => (
-        <Theme inverse>
-          <SubmitButton onPress={() => submit()}>Update Profile</SubmitButton>
-        </Theme>
-      )}
+      renderAfter={({ submit }) => <Theme inverse></Theme>}
     >
       {(fields) => (
         <>
