@@ -19,6 +19,7 @@ export const CustomToast = () => {
       o={1}
       scale={1}
       animation="100ms"
+      elevation="$10"
       themeInverse
     >
       <YStack>

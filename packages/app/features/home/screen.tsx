@@ -1,5 +1,6 @@
 import {
   AchievementCard,
+  AnimatePresence,
   Banner,
   Button,
   EventCard,
@@ -20,8 +21,7 @@ import {
   validToken,
 } from '@my/ui'
 import { ArrowRight, DollarSign, Pencil, User, Users } from '@tamagui/lucide-icons'
-import { Provider } from 'app/provider'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/link'
 import { useRouter } from 'solito/router'
@@ -41,16 +41,38 @@ const defaultAuthors = [
 
 export function HomeScreen() {
   const router = useRouter()
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setShow(true)
+    }, 5000)
+    return () => clearTimeout(t)
+  }, [])
+
+  const toastController = useToastController()
+  if (!show) return null
   return (
     <XStack maw={1480} als="center" f={1}>
       <ScrollView f={3} fb={0}>
-        <YStack gap="$3" pt="$5" pb="$8">
+        {/* <AnimatePresence> */}
+
+        <YStack
+          key="home-animation-test"
+          animation="200ms"
+          enterStyle={{ o: 0, x: -40 }}
+          x={0}
+          o={1}
+          gap="$3"
+          pt="$5"
+          pb="$8"
+        >
           <Button
             onPress={() => {
-              router.push('/about')
+              // router.push('/about')
+              toastController.show('testing', { message: 'testing' })
             }}
           >
-            Go To About
+            Show Toast
           </Button>
           <YStack gap="$6">
             <AchievementsSection />
@@ -58,6 +80,8 @@ export function HomeScreen() {
             <PostsSection />
           </YStack>
         </YStack>
+
+        {/* </AnimatePresence> */}
       </ScrollView>
 
       <Separator vertical />
