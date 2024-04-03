@@ -1,21 +1,4 @@
-import {
-  AnimatePresence,
-  Button,
-  H2,
-  H4,
-  Paragraph,
-  ScrollView,
-  Separator,
-  Theme,
-  XStack,
-  YStack,
-  isWeb,
-  useMedia,
-  useToastController,
-  validToken,
-} from '@my/ui'
-import React, { useEffect, useState } from 'react'
-import { Platform } from 'react-native'
+import { Button, ScrollView, XStack, YStack, useToastController } from '@my/ui'
 
 export function HomeScreen() {
   const toastController = useToastController()
